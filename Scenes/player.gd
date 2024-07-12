@@ -10,7 +10,6 @@ var input_vector: Vector2 = Vector2.ZERO
 
 func _physics_process(delta):
 	if input_vector.length() > 0:
-		print(delta)
 		velocity = velocity.lerp(input_vector*SPEED, ACCEL*delta)
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, DECEL*delta)
