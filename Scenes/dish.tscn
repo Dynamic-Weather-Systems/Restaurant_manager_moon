@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2lrqfonfhvw1"]
+
+[ext_resource type="Script" path="res://Scenes/dish.gd" id="1_804sm"]
+[ext_resource type="Texture2D" uid="uid://dpidc1drviwt0" path="res://Assets/tilesheet.png" id="2_w3xol"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0p03y"]
+radius = 33.3766
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5bhw"]
+atlas = ExtResource("2_w3xol")
+region = Rect2(257, 513, 62, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_weu6i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5bhw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dish" type="Area2D" groups=["pickup_item"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_804sm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0p03y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_weu6i")
