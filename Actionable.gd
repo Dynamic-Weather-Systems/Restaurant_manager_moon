@@ -1,6 +1,8 @@
-extends Area2D
 class_name Actionable
+extends Area2D
+
+signal actioned(node: Node)
 
 
-func action():
-	pass
+func action(node: Node):
+	actioned.emit(node)

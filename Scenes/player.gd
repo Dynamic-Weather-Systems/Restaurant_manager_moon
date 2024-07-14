@@ -24,17 +24,12 @@ func _physics_process(delta):
 
 func _unhandled_input(event):
 	
-	if Input.is_action_just_pressed("interact"):
+	if (not held) and Input.is_action_just_pressed("interact"):
 		var interactables = interacting_area.get_overlapping_areas()
-		print(interactables)
 		if interactables.size() > 0:
-			print(interactables[0])
-			if interactables[0].is_in_group("actionable"):
-				interactables[0].action()
-				input_vector = Vector2.ZERO
-				return 
-			if not held:
-				pickup(interactables[0])
+			interactables[0].action(self)
+			input_vector = Vector2.ZERO
+			return
 	
 	if Input.is_action_just_pressed("drop"):
 		if held:
@@ -58,11 +53,9 @@ func _unhandled_input(event):
 
 func drop(item: PickupItem):
 	held = null
-	item.drop()
+	item.drop(self)
 
 
 func pickup(item: PickupItem):
 	held = item
-	item.pickup(self)
-	print(item)
 	

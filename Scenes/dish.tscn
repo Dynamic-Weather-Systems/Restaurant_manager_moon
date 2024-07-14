@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2lrqfonfhvw1"]
+[gd_scene load_steps=8 format=3 uid="uid://c2lrqfonfhvw1"]
 
 [ext_resource type="Script" path="res://Scenes/dish.gd" id="1_804sm"]
 [ext_resource type="Texture2D" uid="uid://dpidc1drviwt0" path="res://Assets/tilesheet.png" id="2_w3xol"]
+[ext_resource type="PackedScene" uid="uid://dduoickuchbsn" path="res://Scenes/actionable.tscn" id="3_ns8pr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0p03y"]
-radius = 33.3766
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkwoq"]
+radius = 19.105
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a5bhw"]
 atlas = ExtResource("2_w3xol")
@@ -21,13 +22,25 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Dish" type="Area2D" groups=["pickup_item"]]
-collision_layer = 4
+[sub_resource type="CircleShape2D" id="CircleShape2D_1sx3x"]
+radius = 33.5261
+
+[node name="Dish" type="CharacterBody2D" groups=["pickup_item"]]
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_804sm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0p03y")
+shape = SubResource("CircleShape2D_mkwoq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_weu6i")
+
+[node name="Actionable" parent="." instance=ExtResource("3_ns8pr")]
+
+[node name="CollisionShape2D" parent="Actionable" index="0"]
+shape = SubResource("CircleShape2D_1sx3x")
+
+[connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]
+
+[editable path="Actionable"]
