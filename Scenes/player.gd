@@ -5,12 +5,16 @@ extends CharacterBody2D
 @export var ACCEL: float = 15.0
 @export var DECEL: float = 15.0
 
+@export var interacting_area: Area2D
+
 var input_vector: Vector2 = Vector2.ZERO
+var held: PickupItem = null
+
+signal player_dropping(node: Node)
 
 
 func _physics_process(delta):
 	if input_vector.length() > 0:
-		print(delta)
 		velocity = velocity.lerp(input_vector*SPEED, ACCEL*delta)
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, DECEL*delta)
@@ -19,11 +23,39 @@ func _physics_process(delta):
 
 
 func _unhandled_input(event):
+	
+	if (not held) and Input.is_action_just_pressed("interact"):
+		var interactables = interacting_area.get_overlapping_areas()
+		if interactables.size() > 0:
+			interactables[0].action(self)
+			input_vector = Vector2.ZERO
+			return
+	
+	if Input.is_action_just_pressed("drop"):
+		if held:
+			drop(held)
+	
+	# get strength of movement inputs
 	var x_axis = Input.get_axis("move_left", "move_right")
 	var y_axis = Input.get_axis("move_up", "move_down")
 	
+	# calculate input vector, normalize if magnitude larger than 1
 	if x_axis or y_axis:
 		input_vector += (x_axis * Vector2.RIGHT) + (y_axis * Vector2.DOWN)
 		if input_vector.length() > 1: input_vector = input_vector.normalized()
 	else:
 		input_vector = Vector2.ZERO
+	
+	# point towards mouse
+	if event is InputEventMouseMotion:
+		look_at(get_global_mouse_position())
+
+
+func drop(item: PickupItem):
+	held = null
+	item.drop(self)
+
+
+func pickup(item: PickupItem):
+	held = item
+	

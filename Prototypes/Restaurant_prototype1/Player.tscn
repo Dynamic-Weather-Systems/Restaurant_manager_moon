@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhq7cesnv12lm"]
+
+[ext_resource type="Script" path="res://Prototypes/Restaurant_prototype1/Player.gd" id="1_c3vpg"]
+[ext_resource type="Texture2D" uid="uid://fyhut8wjrj1" path="res://Prototypes/Restaurant_prototype1/topdown_shooter_tilesheet.png" id="1_tmf2m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r01li"]
+atlas = ExtResource("1_tmf2m")
+region = Rect2(476, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppeaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r01li")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3cqr"]
+radius = 12.0
+height = 54.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bm0d1"]
+size = Vector2(81, 88)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_c3vpg")
+SPEED = 1000.0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(7, 0)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_ppeaq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_b3cqr")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2(52.5, 0)
+shape = SubResource("RectangleShape2D_bm0d1")
