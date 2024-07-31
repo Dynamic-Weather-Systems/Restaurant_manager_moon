@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://crmti2e6rh2kl"]
+
+[ext_resource type="PackedScene" uid="uid://c38flcd8enwxq" path="res://Scenes/player.tscn" id="1_lc5xc"]
+[ext_resource type="PackedScene" uid="uid://c2lrqfonfhvw1" path="res://Scenes/dish.tscn" id="2_fptjw"]
+[ext_resource type="PackedScene" uid="uid://f06nms5yog23" path="res://Scenes/customer.tscn" id="3_hd3fi"]
+[ext_resource type="PackedScene" uid="uid://i2rmsnxmy4ww" path="res://Scenes/machine.tscn" id="4_1gmqe"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_lc5xc")]
+position = Vector2(608, 298)
+
+[node name="Dish" parent="." instance=ExtResource("2_fptjw")]
+position = Vector2(429, 362)
+
+[node name="Customer" parent="." instance=ExtResource("3_hd3fi")]
+position = Vector2(740, 163)
+
+[node name="Machine" parent="." instance=ExtResource("4_1gmqe")]
+position = Vector2(651, 479)
