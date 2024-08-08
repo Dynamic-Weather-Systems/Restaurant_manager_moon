@@ -3543,6 +3543,7 @@ separation = Vector2i(1, 1)
 [sub_resource type="TileSet" id="TileSet_776ra"]
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/4 = SubResource("TileSetAtlasSource_a27qg")
 
 [node name="TileMap" type="TileMap"]

@@ -20,8 +20,8 @@ func _on_actionable_actioned(node):
 
 
 func create_ingredient():
-	if tabled:
-		return
+	#if tabled:
+		#return
 	
 	tabled = true
 	var instance = ingredient.instantiate()
