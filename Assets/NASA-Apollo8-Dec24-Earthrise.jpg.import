@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl0ev1a060m5c"
-path="res://.godot/imported/buttonLong_grey.png-0a0c8a407e8e375c1fd96ba8b2a5dfdf.ctex"
+uid="uid://7yt73paoccmw"
+path="res://.godot/imported/NASA-Apollo8-Dec24-Earthrise.jpg-c9ce38fd9b0739775fce26d8a9e61898.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/buttonLong_grey.png"
-dest_files=["res://.godot/imported/buttonLong_grey.png-0a0c8a407e8e375c1fd96ba8b2a5dfdf.ctex"]
+source_file="res://Assets/NASA-Apollo8-Dec24-Earthrise.jpg"
+dest_files=["res://.godot/imported/NASA-Apollo8-Dec24-Earthrise.jpg-c9ce38fd9b0739775fce26d8a9e61898.ctex"]
 
 [params]
 
