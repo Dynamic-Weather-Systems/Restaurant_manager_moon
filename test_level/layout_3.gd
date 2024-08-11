@@ -23,7 +23,10 @@ func new_game():
 
 func _on_customer_timer_timeout():
 	if customer_count >= MAX_QUEUE: return
-	
+	spawn_customer()
+
+
+func spawn_customer():
 	# Create a new instance of the Mob scene.
 	var customer = customer_scene.instantiate()
 
@@ -41,13 +44,21 @@ func _on_customer_timer_timeout():
 	add_child(customer)
 	customer.following.connect(_on_customer_following)
 	customer_count += 1
+	return customer
 
 
 func _on_customer_following(node: Node):
 	following_customer = node
 
 
-func _on_seat_seat_interacted(node: Node):
-	assert(following_customer != null)
+func _on_seat_seat_interacted(node: Node, available):
+	if following_customer == null:
+		return
+	if not available:
+		return
+		
 	following_customer.follow_node = node
+	node.available = false
+	following_customer.state = following_customer.SEATING
 	print(following_customer, " sat at seat ", node)
+	following_customer = null

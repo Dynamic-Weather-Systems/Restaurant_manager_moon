@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dduoickuchbsn" path="res://Scenes/actionable.tscn" id="2_lodks"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dcm8"]
-radius = 18.2483
+radius = 53.0094
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jq7wt"]
-radius = 38.3275
+radius = 17.2627
 
 [node name="Customer" type="CharacterBody2D"]
 collision_layer = 8
@@ -22,6 +22,7 @@ script = ExtResource("1_qj4ga")
 shape = SubResource("CircleShape2D_7dcm8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_jq7wt")
 
 [connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]
