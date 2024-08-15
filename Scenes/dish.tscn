@@ -1,26 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2lrqfonfhvw1"]
+[gd_scene load_steps=5 format=3 uid="uid://c2lrqfonfhvw1"]
 
 [ext_resource type="Script" path="res://Scenes/dish.gd" id="1_804sm"]
-[ext_resource type="Texture2D" uid="uid://dpidc1drviwt0" path="res://Assets/tilesheet.png" id="2_w3xol"]
 [ext_resource type="PackedScene" uid="uid://dduoickuchbsn" path="res://Scenes/actionable.tscn" id="3_ns8pr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkwoq"]
 radius = 19.105
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5bhw"]
-atlas = ExtResource("2_w3xol")
-region = Rect2(257, 513, 62, 62)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_weu6i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a5bhw")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1sx3x"]
 radius = 33.5261
@@ -33,8 +17,8 @@ script = ExtResource("1_804sm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mkwoq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_weu6i")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Actionable" parent="." instance=ExtResource("3_ns8pr")]
 

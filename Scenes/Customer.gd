@@ -20,6 +20,7 @@ var follow_node: Node2D = null
 var direction: Vector2 = Vector2.ZERO
 
 signal following(node: Node)
+signal placed_order(customer: Node, dish: String)
 
 
 func _physics_process(delta):
@@ -57,13 +58,12 @@ func _physics_process(delta):
 
 
 func _on_actionable_actioned(node: Node2D):
-	print("Customer ", name, " interacted by ", node.name)
 	match state:
 		RECEPTION:
-			print("Customer ", name, " wants ", preferred_dish)
 			follow_node = node
 			switch_state(WALKING)
 			following.emit(self)
+			placed_order.emit(self,preferred_dish)
 		SEATED:
 			pass
 		EATING:

@@ -6,6 +6,7 @@ extends Node2D
 var score = 0
 var customer_count = 0
 var following_customer: Node = null
+var dish_queue = []
 
 
 func _ready():
@@ -43,12 +44,19 @@ func spawn_customer():
 	# Spawn the mob by adding it to the Main scene
 	add_child(customer)
 	customer.following.connect(_on_customer_following)
+	customer.placed_order.connect(_on_order_placed)
 	customer_count += 1
 	return customer
 
 
 func _on_customer_following(node: Node):
 	following_customer = node
+
+
+func _on_order_placed(customer: Node, order: String):
+	dish_queue.append([customer, order])
+	print(dish_queue)
+
 
 
 func _on_seat_seat_interacted(node: Node, available):
@@ -60,5 +68,4 @@ func _on_seat_seat_interacted(node: Node, available):
 	following_customer.follow_node = node
 	node.available = false
 	following_customer.state = following_customer.SEATING
-	print(following_customer, " sat at seat ", node)
 	following_customer = null

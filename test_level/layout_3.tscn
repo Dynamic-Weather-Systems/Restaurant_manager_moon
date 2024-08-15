@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://brid2qg75jb3o"]
+[gd_scene load_steps=11 format=3 uid="uid://brid2qg75jb3o"]
 
 [ext_resource type="Script" path="res://test_level/layout_3.gd" id="1_finjn"]
 [ext_resource type="PackedScene" uid="uid://ds805v8pqf78c" path="res://Scenes/tile_map.tscn" id="1_yn6om"]
 [ext_resource type="PackedScene" uid="uid://f06nms5yog23" path="res://Scenes/customer.tscn" id="2_djsb5"]
 [ext_resource type="PackedScene" uid="uid://c38flcd8enwxq" path="res://Scenes/player.tscn" id="2_gvk54"]
 [ext_resource type="PackedScene" uid="uid://bh6i43rgh7q51" path="res://Scenes/ingredient_generator.tscn" id="3_ijbev"]
+[ext_resource type="Resource" uid="uid://bk7nsadcwvu08" path="res://Resources/Dishes/test_dish.tres" id="6_odm7m"]
+[ext_resource type="PackedScene" uid="uid://c2lrqfonfhvw1" path="res://Scenes/dish.tscn" id="6_rf0ws"]
 [ext_resource type="PackedScene" uid="uid://b8aubul4731yx" path="res://Scenes/seat.tscn" id="6_va7qw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qi08"]
@@ -34,12 +36,17 @@ position = Vector2(-152, 435)
 
 [node name="IngredientGenerator" parent="." instance=ExtResource("3_ijbev")]
 position = Vector2(-744, 72)
+dish_scene = ExtResource("6_rf0ws")
+dish = ExtResource("6_odm7m")
 
 [node name="Table" parent="IngredientGenerator" index="1"]
 position = Vector2(0, -96)
 
 [node name="CollisionShape2D" parent="IngredientGenerator/Table" index="0"]
 shape = SubResource("RectangleShape2D_4qi08")
+
+[node name="IngredientSpawnLocation" parent="IngredientGenerator" index="2"]
+position = Vector2(0, -96)
 
 [node name="CustomerPath" type="Path2D" parent="."]
 position = Vector2(0, 1)

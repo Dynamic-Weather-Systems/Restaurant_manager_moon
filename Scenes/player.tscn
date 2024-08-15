@@ -26,7 +26,7 @@ size = Vector2(58, 72)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interacting_area")]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 9
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_a6xo7")
@@ -47,3 +47,6 @@ position = Vector2(29, 0)
 shape = SubResource("RectangleShape2D_3ag7f")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PickupItemMarker2D" type="Marker2D" parent="."]
+position = Vector2(29, 0)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DishItem" load_steps=3 format=3 uid="uid://bk7nsadcwvu08"]
+
+[ext_resource type="Script" path="res://Resources/dish_item.gd" id="1_h23ff"]
+[ext_resource type="Texture2D" uid="uid://coxv83m6fj466" path="res://Assets/test_dish_world_icon.png" id="2_v3ux7"]
+
+[resource]
+script = ExtResource("1_h23ff")
+name = "test_dish"
+world_icon = ExtResource("2_v3ux7")
+ingredients = Array[String]([""])
