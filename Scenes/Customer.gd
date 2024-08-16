@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var preferred_dish: String = "dish"
+@export var preferred_dish: DishItem
 @export var SPEED: float = 600.0
 @export var vel_lerp_weight: float = 0.2
 @export var sitting_speed: float = 400
@@ -18,9 +18,11 @@ enum {
 var state = RECEPTION
 var follow_node: Node2D = null
 var direction: Vector2 = Vector2.ZERO
+var customer_name = randi()
 
 signal following(node: Node)
-signal placed_order(customer: Node, dish: String)
+signal placed_order(customer: Node, dish: DishItem)
+signal ate(customer: Node, dish: DishItem)
 
 
 func _physics_process(delta):
@@ -60,12 +62,16 @@ func _physics_process(delta):
 func _on_actionable_actioned(node: Node2D):
 	match state:
 		RECEPTION:
+			if node.is_in_group("pickup_item"): return
 			follow_node = node
 			switch_state(WALKING)
 			following.emit(self)
 			placed_order.emit(self,preferred_dish)
 		SEATED:
-			pass
+			if not node.is_in_group("dish"): return
+			print(name + " was fed " + node.dish.name)
+			ate.emit(self,node.dish)
+			queue_free()
 		EATING:
 			pass
 		LEAVING:

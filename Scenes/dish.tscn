@@ -9,7 +9,7 @@ radius = 19.105
 [sub_resource type="CircleShape2D" id="CircleShape2D_1sx3x"]
 radius = 33.5261
 
-[node name="Dish" type="CharacterBody2D" groups=["pickup_item"]]
+[node name="Dish" type="CharacterBody2D" groups=["dish", "pickup_item"]]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_804sm")
@@ -21,6 +21,8 @@ shape = SubResource("CircleShape2D_mkwoq")
 unique_name_in_owner = true
 
 [node name="Actionable" parent="." instance=ExtResource("3_ns8pr")]
+unique_name_in_owner = true
+collision_mask = 8
 
 [node name="CollisionShape2D" parent="Actionable" index="0"]
 shape = SubResource("CircleShape2D_1sx3x")

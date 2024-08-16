@@ -45,6 +45,7 @@ func spawn_customer():
 	add_child(customer)
 	customer.following.connect(_on_customer_following)
 	customer.placed_order.connect(_on_order_placed)
+	customer.ate.connect(_on_customer_ate)
 	customer_count += 1
 	return customer
 
@@ -53,9 +54,13 @@ func _on_customer_following(node: Node):
 	following_customer = node
 
 
-func _on_order_placed(customer: Node, order: String):
+func _on_order_placed(customer: Node, order: DishItem):
 	dish_queue.append([customer, order])
 	print(dish_queue)
+
+
+func _on_customer_ate(customer: Node, dish: DishItem):
+	print(dish_queue.bsearch([customer,dish],true))
 
 
 

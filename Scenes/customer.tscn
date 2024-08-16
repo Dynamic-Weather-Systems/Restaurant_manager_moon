@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://f06nms5yog23"]
+[gd_scene load_steps=6 format=3 uid="uid://f06nms5yog23"]
 
 [ext_resource type="Script" path="res://Scenes/Customer.gd" id="1_qj4ga"]
 [ext_resource type="PackedScene" uid="uid://dduoickuchbsn" path="res://Scenes/actionable.tscn" id="2_lodks"]
+[ext_resource type="Resource" uid="uid://bk7nsadcwvu08" path="res://Resources/Dishes/test_dish.tres" id="2_oye8u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dcm8"]
 radius = 53.0094
@@ -15,8 +16,10 @@ collision_mask = 11
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_qj4ga")
+preferred_dish = ExtResource("2_oye8u")
 
 [node name="Actionable" parent="." groups=["actionable"] instance=ExtResource("2_lodks")]
+collision_layer = 12
 
 [node name="CollisionShape2D" parent="Actionable" index="0"]
 shape = SubResource("CircleShape2D_7dcm8")
