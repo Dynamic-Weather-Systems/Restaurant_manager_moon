@@ -1,15 +1,32 @@
 [gd_scene load_steps=4 format=3 uid="uid://bh6i43rgh7q51"]
 
 [ext_resource type="Script" path="res://Scenes/ingredient_generator.gd" id="1_1epi0"]
-[ext_resource type="PackedScene" uid="uid://c2lrqfonfhvw1" path="res://Scenes/dish.tscn" id="2_72an4"]
-[ext_resource type="PackedScene" uid="uid://dduoickuchbsn" path="res://Scenes/actionable.tscn" id="2_mks5m"]
+[ext_resource type="Script" path="res://Scenes/Actionable.gd" id="3_0ds2d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qm7t1"]
+radius = 25.0
 
 [node name="IngredientGenerator" type="StaticBody2D"]
 script = ExtResource("1_1epi0")
-ingredient = ExtResource("2_72an4")
 
-[node name="Actionable" parent="." instance=ExtResource("2_mks5m")]
+[node name="Actionable" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_0ds2d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+shape = SubResource("CircleShape2D_qm7t1")
+
+[node name="Table" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+
+[node name="IngredientSpawnLocation" type="Marker2D" parent="."]
+unique_name_in_owner = true
 
 [connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]
-
-[editable path="Actionable"]
+[connection signal="area_entered" from="Table" to="." method="_on_table_area_entered"]
+[connection signal="area_exited" from="Table" to="." method="_on_table_area_exited"]

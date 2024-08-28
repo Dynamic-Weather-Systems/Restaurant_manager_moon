@@ -1,18 +1,14 @@
 extends StaticBody2D
 
 
-@export  var ingredient: PackedScene
-var tabled: bool = false
+@export  var dish_scene: PackedScene
+@export var dish: DishItem
+var tabled: int = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_actionable_actioned(node):
@@ -23,7 +19,17 @@ func create_ingredient():
 	if tabled:
 		return
 	
-	tabled = true
-	var instance = ingredient.instantiate()
-	instance.global_position = global_position + Vector2(0,50)
+	var instance = dish_scene.instantiate()
+	instance.dish = dish
+
+	instance.global_position = %IngredientSpawnLocation.global_position
 	get_parent().add_child(instance)
+
+
+
+func _on_table_area_entered(area):
+	tabled += 1
+
+
+func _on_table_area_exited(area):
+	tabled -= 1

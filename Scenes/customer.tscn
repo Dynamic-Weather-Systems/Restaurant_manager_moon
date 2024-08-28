@@ -1,21 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://f06nms5yog23"]
+[gd_scene load_steps=6 format=3 uid="uid://f06nms5yog23"]
 
-[ext_resource type="Script" path="res://Customer.gd" id="1_rakfp"]
+[ext_resource type="Script" path="res://Scenes/Customer.gd" id="1_qj4ga"]
 [ext_resource type="PackedScene" uid="uid://dduoickuchbsn" path="res://Scenes/actionable.tscn" id="2_lodks"]
+[ext_resource type="Resource" uid="uid://bk7nsadcwvu08" path="res://Resources/Dishes/test_dish.tres" id="2_oye8u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dcm8"]
-radius = 18.2483
+radius = 53.0094
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jq7wt"]
+radius = 17.2627
 
 [node name="Customer" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 11
 motion_mode = 1
-script = ExtResource("1_rakfp")
+wall_min_slide_angle = 0.0
+script = ExtResource("1_qj4ga")
+preferred_dish = ExtResource("2_oye8u")
 
 [node name="Actionable" parent="." groups=["actionable"] instance=ExtResource("2_lodks")]
+collision_layer = 12
 
 [node name="CollisionShape2D" parent="Actionable" index="0"]
 shape = SubResource("CircleShape2D_7dcm8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_jq7wt")
 
 [connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]
 

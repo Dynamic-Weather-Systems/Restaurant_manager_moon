@@ -1,13 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://brid2qg75jb3o"]
+[gd_scene load_steps=11 format=3 uid="uid://brid2qg75jb3o"]
 
+[ext_resource type="Script" path="res://test_level/layout_3.gd" id="1_finjn"]
 [ext_resource type="PackedScene" uid="uid://ds805v8pqf78c" path="res://Scenes/tile_map.tscn" id="1_yn6om"]
+[ext_resource type="PackedScene" uid="uid://f06nms5yog23" path="res://Scenes/customer.tscn" id="2_djsb5"]
 [ext_resource type="PackedScene" uid="uid://c38flcd8enwxq" path="res://Scenes/player.tscn" id="2_gvk54"]
 [ext_resource type="PackedScene" uid="uid://bh6i43rgh7q51" path="res://Scenes/ingredient_generator.tscn" id="3_ijbev"]
+[ext_resource type="Resource" uid="uid://bk7nsadcwvu08" path="res://Resources/Dishes/test_dish.tres" id="6_odm7m"]
+[ext_resource type="PackedScene" uid="uid://c2lrqfonfhvw1" path="res://Scenes/dish.tscn" id="6_rf0ws"]
+[ext_resource type="PackedScene" uid="uid://b8aubul4731yx" path="res://Scenes/seat.tscn" id="6_va7qw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xckot"]
-radius = 18.0278
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qi08"]
+size = Vector2(44, 44)
 
-[node name="level_1" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_vy81x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1246, -3, 0, 0, 0, 0, 1241, 876)
+}
+point_count = 2
+
+[node name="level_1" type="Node2D" groups=["level_controller"]]
+script = ExtResource("1_finjn")
+customer_scene = ExtResource("2_djsb5")
 
 [node name="layout3" parent="." instance=ExtResource("1_yn6om")]
 scale = Vector2(3, 3)
@@ -20,13 +33,95 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_gvk54")]
 position = Vector2(-152, 435)
-wall_min_slide_angle = 0.0
 
 [node name="IngredientGenerator" parent="." instance=ExtResource("3_ijbev")]
 position = Vector2(-744, 72)
+dish_scene = ExtResource("6_rf0ws")
+dish = ExtResource("6_odm7m")
 
-[node name="CollisionShape2D" parent="IngredientGenerator/Actionable" index="0"]
-shape = SubResource("CircleShape2D_xckot")
+[node name="Table" parent="IngredientGenerator" index="1"]
+position = Vector2(0, -96)
+
+[node name="CollisionShape2D" parent="IngredientGenerator/Table" index="0"]
+shape = SubResource("RectangleShape2D_4qi08")
+
+[node name="IngredientSpawnLocation" parent="IngredientGenerator" index="2"]
+position = Vector2(0, -96)
+
+[node name="CustomerPath" type="Path2D" parent="."]
+position = Vector2(0, 1)
+curve = SubResource("Curve2D_vy81x")
+
+[node name="CustomerSpawnLocation" type="PathFollow2D" parent="CustomerPath"]
+position = Vector2(1246, -3)
+rotation = 1.57648
+
+[node name="CustomerTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Seats" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Seat" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(120, 216)
+
+[node name="Seat2" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(23, 313)
+
+[node name="Seat3" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(120, 407)
+
+[node name="Seat4" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(218, 313)
+
+[node name="Seat5" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(404, 313)
+
+[node name="Seat6" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(502, 214)
+
+[node name="Seat7" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(601, 312)
+
+[node name="Seat8" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(503, 406)
+
+[node name="Seat9" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(311, 548)
+
+[node name="Seat10" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(408, 645)
+
+[node name="Seat11" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(312, 749)
+
+[node name="Seat12" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(213, 649)
+
+[node name="Seat13" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(-23, 601)
+
+[node name="Seat14" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(-122, 698)
+
+[node name="Seat15" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(-217, 599)
+
+[node name="Seat16" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(-120, 503)
+
+[node name="Seat17" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(-265, 315)
+
+[node name="Seat18" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(-364, 215)
+
+[node name="Seat19" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(-265, 119)
+
+[node name="Seat20" parent="Seats" instance=ExtResource("6_va7qw")]
+position = Vector2(-168, 215)
+
+[connection signal="timeout" from="CustomerTimer" to="." method="_on_customer_timer_timeout"]
 
 [editable path="IngredientGenerator"]
-[editable path="IngredientGenerator/Actionable"]
