@@ -2,6 +2,9 @@ extends PickupItem
 
 
 var dish: DishItem
+var amino = preload("res://Resources/Ingredients/amino.tres")
+var fats = preload("res://Resources/Ingredients/fats.tres")
+const Ingredient = preload("res://Resources/ingredient_item.gd")
 @onready var actionable = $%Actionable
 
 
