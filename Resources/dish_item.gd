@@ -7,8 +7,11 @@ extends Resource
 @export var ingredients: Array[IngredientItem]
 
 
-func add_ingredient(ingredient: IngredientItem):
-	ingredients.append(ingredient)
+func add_ingredient(new_ingredient: IngredientItem):
+	for ingredient in ingredients:
+		if new_ingredient.name == ingredient.name:
+			return
+	ingredients.append(new_ingredient.duplicate())
 
 
 func cook_dish(time: float):

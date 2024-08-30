@@ -1,14 +1,9 @@
 extends StaticBody2D
 
 
-@export  var dish_scene: PackedScene
-@export var dish: DishItem
+@export  var ingredient_scene: PackedScene
+@export var ingredients: Array[IngredientItem]
 var tabled: int = 0
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
 func _on_actionable_actioned(node):
@@ -19,8 +14,8 @@ func create_ingredient():
 	if tabled:
 		return
 	
-	var instance = dish_scene.instantiate()
-	instance.dish = dish
+	var instance = ingredient_scene.instantiate()
+	instance.ingredient = ingredients[randi_range(0,len(ingredients)-1)]
 
 	instance.global_position = %IngredientSpawnLocation.global_position
 	get_parent().add_child(instance)

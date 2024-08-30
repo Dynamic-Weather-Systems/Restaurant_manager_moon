@@ -2,9 +2,6 @@ extends PickupItem
 
 
 var dish: DishItem
-var amino = preload("res://Resources/Ingredients/amino.tres")
-var fats = preload("res://Resources/Ingredients/fats.tres")
-const Ingredient = preload("res://Resources/ingredient_item.gd")
 @onready var actionable = $%Actionable
 
 
@@ -12,8 +9,19 @@ func _ready():
 	set_icon(dish.world_icon)
 
 
+func _process(delta):
+	print(len(dish.ingredients))
+	if len(dish.ingredients):
+		print(dish.ingredients[-1].name, " ", dish.ingredients[-1].cook_time)
+
+
 func _on_actionable_actioned(node: Node):
-	pickup(node)
+	if node.is_in_group("ingredient"):
+		print("Added ingredient ", node.ingredient.name)
+		dish.add_ingredient(node.ingredient)
+		node.queue_free()
+	elif node.is_in_group("player"):
+		pickup(node)
 
 
 func set_icon(icon: Texture2D):
@@ -26,3 +34,7 @@ func drop(character: CharacterBody2D):
 	if len(customers) > 0:
 		customers[0].action(self)
 		queue_free()
+
+
+func cook_dish(time: float):
+	dish.cook_dish(time)

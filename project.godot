@@ -62,6 +62,7 @@ drop={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Interactable"
 2d_physics/layer_4="Customer"
+2d_physics/layer_5="Dishes"
 
 [rendering]
 

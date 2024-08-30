@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhi3xm8xontk5"]
+
+[ext_resource type="Script" path="res://Scenes/ingredient_scene.gd" id="1_5j1i8"]
+[ext_resource type="Script" path="res://Scenes/Actionable.gd" id="1_mngqx"]
+[ext_resource type="Resource" uid="uid://cxvua4t6sku05" path="res://Resources/Ingredients/amino.tres" id="2_fy20g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m52bq"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l4kg1"]
+radius = 34.0
+
+[node name="IngredientScene" type="CharacterBody2D" groups=["ingredient"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_5j1i8")
+ingredient = ExtResource("2_fy20g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m52bq")
+
+[node name="Actionable" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("1_mngqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+shape = SubResource("CircleShape2D_l4kg1")
+
+[connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]
