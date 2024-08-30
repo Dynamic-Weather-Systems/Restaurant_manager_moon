@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var vel_lerp_weight: float = 0.2
 @export var sitting_speed: float = 400
 
+
 enum {
 	RECEPTION,
 	WALKING,
