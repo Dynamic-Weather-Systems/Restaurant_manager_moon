@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gaeas60ulxyk"]
+[gd_scene load_steps=18 format=3 uid="uid://gaeas60ulxyk"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_182fm"]
 [ext_resource type="Texture2D" uid="uid://7yt73paoccmw" path="res://Assets/NASA-Apollo8-Dec24-Earthrise.jpg" id="1_j61nv"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://iww3tdrso2ek" path="res://Assets/options.png" id="9_eu5py"]
 [ext_resource type="Texture2D" uid="uid://b1dheg3djg7km" path="res://Assets/options_pressed.png" id="10_3okxa"]
 [ext_resource type="Texture2D" uid="uid://cbcttnpasa2u4" path="res://Assets/credits.png" id="12_ar8ww"]
+[ext_resource type="AudioStream" path="res://Assets/751965__davejf__guitar-drank-110-bpm-cm.wav" id="12_ymjof"]
 [ext_resource type="Texture2D" uid="uid://bfw24t8yt8pkd" path="res://Assets/credits_pressed.png" id="13_7dtd0"]
+[ext_resource type="AudioStream" path="res://Assets/751427__davejf__fx-sound.wav" id="13_fjwwq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvgba"]
 size = Vector2(191, 46)
@@ -119,6 +121,16 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="credits/credits_area"]
 position = Vector2(95, 22)
 shape = SubResource("RectangleShape2D_o2nx4")
+
+[node name="guitar" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(171, 256)
+stream = ExtResource("12_ymjof")
+autoplay = true
+
+[node name="gun" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(171, 256)
+stream = ExtResource("13_fjwwq")
+autoplay = true
 
 [connection signal="pressed" from="continue_button" to="." method="_on_continue_button_pressed"]
 [connection signal="mouse_entered" from="continue_button/continue_area" to="." method="_on_continue_area_mouse_entered"]

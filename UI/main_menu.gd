@@ -10,6 +10,9 @@ var new_game_tex_hov = load("res://Assets/new_game_hover.png")
 var options_tex_hov = load("res://Assets/options_hover.png")
 var credits_tex_hov = load("res://Assets/credits_hover.png")
 
+var level_scene = load('res://test_level/layout_3.tscn').instantiate()
+var credit_scene = load('res://UI/credits_scene.tscn').instantiate()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$continue_button.grab_focus()
@@ -40,11 +43,13 @@ func _process(delta):
 
 
 func _on_continue_button_pressed():
-	print('continue')
+	get_tree().root.add_child(level_scene)
+	self.queue_free()
 
 
 func _on_new_game_pressed():
-	print('new game')
+	get_tree().root.add_child(level_scene)
+	self.queue_free()
 
 
 func _on_options_pressed():
@@ -52,7 +57,8 @@ func _on_options_pressed():
 
 
 func _on_credits_pressed():
-	print('credits')
+	get_tree().root.add_child(credit_scene)
+	self.queue_free()
 
 
 func _on_continue_area_mouse_entered():
