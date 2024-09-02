@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://iww3tdrso2ek" path="res://Assets/options.png" id="9_eu5py"]
 [ext_resource type="Texture2D" uid="uid://b1dheg3djg7km" path="res://Assets/options_pressed.png" id="10_3okxa"]
 [ext_resource type="Texture2D" uid="uid://cbcttnpasa2u4" path="res://Assets/credits.png" id="12_ar8ww"]
-[ext_resource type="AudioStream" path="res://Assets/751965__davejf__guitar-drank-110-bpm-cm.wav" id="12_ymjof"]
+[ext_resource type="AudioStream" uid="uid://bys3vfbi8snis" path="res://Assets/751965__davejf__guitar-drank-110-bpm-cm.wav" id="12_ymjof"]
 [ext_resource type="Texture2D" uid="uid://bfw24t8yt8pkd" path="res://Assets/credits_pressed.png" id="13_7dtd0"]
-[ext_resource type="AudioStream" path="res://Assets/751427__davejf__fx-sound.wav" id="13_fjwwq"]
+[ext_resource type="AudioStream" uid="uid://dgfkbtfs2n3s0" path="res://Assets/751427__davejf__fx-sound.wav" id="13_fjwwq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvgba"]
 size = Vector2(191, 46)
@@ -125,12 +125,16 @@ shape = SubResource("RectangleShape2D_o2nx4")
 [node name="guitar" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(171, 256)
 stream = ExtResource("12_ymjof")
+volume_db = -7.173
 autoplay = true
+bus = &"music"
 
 [node name="gun" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(171, 256)
 stream = ExtResource("13_fjwwq")
+volume_db = -17.45
 autoplay = true
+bus = &"sfx"
 
 [connection signal="pressed" from="continue_button" to="." method="_on_continue_button_pressed"]
 [connection signal="mouse_entered" from="continue_button/continue_area" to="." method="_on_continue_area_mouse_entered"]
@@ -140,3 +144,5 @@ autoplay = true
 [connection signal="mouse_entered" from="options/options_area" to="." method="_on_options_area_mouse_entered"]
 [connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
 [connection signal="mouse_entered" from="credits/credits_area" to="." method="_on_credits_area_mouse_entered"]
+[connection signal="finished" from="guitar" to="." method="_on_guitar_finished"]
+[connection signal="finished" from="gun" to="." method="_on_gun_finished"]

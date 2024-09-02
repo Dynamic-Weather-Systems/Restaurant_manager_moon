@@ -75,3 +75,11 @@ func _on_options_area_mouse_entered():
 
 func _on_credits_area_mouse_entered():
 	$credits.grab_focus()
+
+
+func _on_guitar_finished():
+	$guitar.play()
+
+
+func _on_gun_finished():
+	$gun.play()
