@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c2lrqfonfhvw1" path="res://Scenes/dish_scene.tscn" id="6_rf0ws"]
 [ext_resource type="PackedScene" uid="uid://b8aubul4731yx" path="res://Scenes/seat.tscn" id="6_va7qw"]
 [ext_resource type="PackedScene" uid="uid://cosyd6yfx0ua" path="res://Scenes/ingredient_generator.tscn" id="9_rr34j"]
-[ext_resource type="PackedScene" uid="uid://bhi3xm8xontk5" path="res://Scenes/ingredient_scene.tscn" id="10_rxwy6"]
+[ext_resource type="PackedScene" uid="uid://dnrn58c2uwi7h" path="res://Scenes/stove.tscn" id="11_34rgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qi08"]
 size = Vector2(44, 44)
@@ -137,8 +137,8 @@ shape = SubResource("RectangleShape2D_tse6e")
 [node name="IngredientSpawnLocation" parent="IngredientGenerator" index="2"]
 position = Vector2(0, -96)
 
-[node name="IngredientScene" parent="." instance=ExtResource("10_rxwy6")]
-position = Vector2(-939, 76)
+[node name="Stove" parent="." instance=ExtResource("11_34rgn")]
+position = Vector2(-793, 690)
 
 [connection signal="timeout" from="CustomerTimer" to="." method="_on_customer_timer_timeout"]
 

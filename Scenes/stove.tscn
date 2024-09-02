@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnrn58c2uwi7h"]
+
+[ext_resource type="Script" path="res://Scenes/Actionable.gd" id="1_5xbxp"]
+[ext_resource type="Script" path="res://Scenes/stove.gd" id="1_hau46"]
+[ext_resource type="PackedScene" uid="uid://c2lrqfonfhvw1" path="res://Scenes/dish_scene.tscn" id="2_nf6oy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjdr1"]
+size = Vector2(68, 128)
+
+[node name="Stove" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_hau46")
+dish_scene = ExtResource("2_nf6oy")
+
+[node name="Actionable" type="Area2D" parent="."]
+collision_layer = 36
+collision_mask = 0
+script = ExtResource("1_5xbxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+shape = SubResource("RectangleShape2D_xjdr1")
+
+[node name="CookTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="DishSpawnLocation" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]
+[connection signal="timeout" from="CookTimer" to="." method="_on_cook_timer_timeout"]

@@ -19,7 +19,7 @@ func create_ingredient():
 		return
 	
 	var instance = dish_scene.instantiate()
-	instance.dish = dish
+	instance.dish = dish.duplicate()
 
 	instance.global_position = %DishSpawnLocation.global_position
 	get_parent().add_child(instance)

@@ -30,9 +30,9 @@ func set_icon(icon: Texture2D):
 
 func drop(character: CharacterBody2D):
 	super(character)
-	var customers = actionable.get_overlapping_areas()
-	if len(customers) > 0:
-		customers[0].action(self)
+	var interactables = actionable.get_overlapping_areas()
+	if len(interactables) > 0:
+		interactables[0].action(self)
 		queue_free()
 
 
