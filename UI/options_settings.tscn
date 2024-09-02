@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk8kk0l37wwyh"]
+[gd_scene load_steps=2 format=3 uid="uid://bk8kk0l37wwyh"]
 
 [ext_resource type="Script" path="res://UI/options_settings.gd" id="1_jbyfm"]
-[ext_resource type="AudioStream" uid="uid://bys3vfbi8snis" path="res://Assets/751965__davejf__guitar-drank-110-bpm-cm.wav" id="2_bl78n"]
-[ext_resource type="AudioStream" uid="uid://dgfkbtfs2n3s0" path="res://Assets/751427__davejf__fx-sound.wav" id="3_mt7xk"]
 
 [node name="options_settings" type="Control"]
 layout_mode = 3
@@ -28,6 +26,7 @@ offset_bottom = 43.0
 text = "100"
 
 [node name="name_text" type="Label" parent="master_volume"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 19.0
 offset_right = 126.0
@@ -35,6 +34,7 @@ offset_bottom = 42.0
 text = "Master Volume:"
 
 [node name="sound_effects" type="HScrollBar" parent="."]
+layout_mode = 0
 offset_left = 209.0
 offset_top = 235.0
 offset_right = 452.0
@@ -52,6 +52,7 @@ offset_bottom = 42.0
 text = "100"
 
 [node name="name_text" type="Label" parent="sound_effects"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 19.0
 offset_right = 126.0
@@ -59,6 +60,7 @@ offset_bottom = 42.0
 text = "Sound Effects:"
 
 [node name="background_music" type="HScrollBar" parent="."]
+layout_mode = 0
 offset_left = 209.0
 offset_top = 156.0
 offset_right = 452.0
@@ -76,28 +78,13 @@ offset_bottom = 43.0
 text = "100"
 
 [node name="name_text" type="Label" parent="background_music"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 19.0
 offset_right = 126.0
 offset_bottom = 42.0
 text = "Music: "
 
-[node name="guitar" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(171, 256)
-stream = ExtResource("2_bl78n")
-volume_db = -7.173
-autoplay = true
-bus = &"music"
-
-[node name="gun" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(171, 256)
-stream = ExtResource("3_mt7xk")
-volume_db = -17.45
-autoplay = true
-bus = &"sfx"
-
 [connection signal="value_changed" from="master_volume" to="." method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="sound_effects" to="." method="_on_sound_effects_value_changed"]
 [connection signal="value_changed" from="background_music" to="." method="_on_background_music_value_changed"]
-[connection signal="finished" from="guitar" to="." method="_on_guitar_finished"]
-[connection signal="finished" from="gun" to="." method="_on_gun_finished"]
