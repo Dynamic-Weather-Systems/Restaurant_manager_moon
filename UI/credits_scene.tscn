@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8ckquk17h62d"]
+
+[ext_resource type="Script" path="res://UI/credits_scene.gd" id="1_5v15x"]
+[ext_resource type="Texture2D" uid="uid://7yt73paoccmw" path="res://Assets/NASA-Apollo8-Dec24-Earthrise.jpg" id="1_nlxwv"]
+
+[node name="credits_scene" type="Node2D"]
+script = ExtResource("1_5v15x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("1_nlxwv")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+offset_right = 772.0
+offset_bottom = 226.0
+theme_override_font_sizes/font_size = 55
+text = "DYNAMIC WEATHER STUDIOS"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 355.0
+offset_top = 116.0
+offset_right = 403.0
+offset_bottom = 147.0
+scale = Vector2(2, 2)
+text = "close"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
