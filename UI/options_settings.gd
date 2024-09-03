@@ -10,6 +10,8 @@ var music_settings = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$master_volume.grab_focus()
+	
 	if not FileAccess.file_exists("res://saves/music_settings.save"):
 		return
 		
@@ -63,4 +65,8 @@ func save_settings():
 	var save_file = FileAccess.open("res://saves/music_settings.save", FileAccess.WRITE)
 	var json_string = JSON.stringify(music_settings)
 	save_file.store_line(json_string)
-	print(AudioServer.get_bus_volume_db(0), ' ', AudioServer.get_bus_volume_db(1), ' ', AudioServer.get_bus_volume_db(2), ' ', 'options')
+
+
+func _on_button_pressed():
+	get_node("/root/main_menu").set_process_mode(0)
+	self.queue_free()

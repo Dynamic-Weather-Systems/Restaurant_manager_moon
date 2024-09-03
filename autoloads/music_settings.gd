@@ -28,14 +28,10 @@ func _ready():
 
 		# Get the data from the JSON object
 		music_settings = json.get_data()
-		print(music_settings)
 	
-	print(AudioServer.get_bus_volume_db(0), ' ', AudioServer.get_bus_volume_db(1), ' ',AudioServer.get_bus_volume_db(2), 'auto1')
 	AudioServer.set_bus_volume_db(0, linear_to_db(music_settings['master_vol']))
 	AudioServer.set_bus_volume_db(2, linear_to_db(music_settings['sfx_vol']))
 	AudioServer.set_bus_volume_db(1, linear_to_db(music_settings['background_vol']))
-	print(AudioServer.get_bus_volume_db(0), ' ', AudioServer.get_bus_volume_db(1), ' ', AudioServer.get_bus_volume_db(2), ' ', 'auto2')
-	print(music_settings['master_vol'], ' ', music_settings['sfx_vol'], ' ',  music_settings['background_vol'], ' linear')
 
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.

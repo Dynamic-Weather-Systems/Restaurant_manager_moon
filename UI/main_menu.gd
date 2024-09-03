@@ -10,9 +10,9 @@ var new_game_tex_hov = load("res://Assets/new_game_hover.png")
 var options_tex_hov = load("res://Assets/options_hover.png")
 var credits_tex_hov = load("res://Assets/credits_hover.png")
 
-var level_scene = load('res://test_level/layout_3.tscn').instantiate()
-var credit_scene = load('res://UI/credits_scene.tscn').instantiate()
-var options_scene = load('res://UI/options_settings.tscn').instantiate()
+var level_scene = load('res://test_level/layout_3.tscn')
+var credit_scene = load('res://UI/credits_scene.tscn')
+var options_scene = load('res://UI/options_settings.tscn')
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,21 +44,22 @@ func _process(delta):
 
 
 func _on_continue_button_pressed():
-	get_tree().root.add_child(level_scene)
+	get_tree().root.add_child(level_scene.instantiate())
 	self.queue_free()
 
 
 func _on_new_game_pressed():
-	get_tree().root.add_child(level_scene)
+	get_tree().root.add_child(level_scene.instantiate())
 	self.queue_free()
 
 
 func _on_options_pressed():
-	get_tree().root.add_child(options_scene)
+	get_tree().root.add_child(options_scene.instantiate())
+	self.set_process_mode(4)
 
 
 func _on_credits_pressed():
-	get_tree().root.add_child(credit_scene)
+	get_tree().root.add_child(credit_scene.instantiate())
 	self.queue_free()
 
 

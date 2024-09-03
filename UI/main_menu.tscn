@@ -123,6 +123,7 @@ position = Vector2(95, 22)
 shape = SubResource("RectangleShape2D_o2nx4")
 
 [node name="guitar" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 position = Vector2(171, 256)
 stream = ExtResource("12_ymjof")
 volume_db = -7.173
@@ -130,6 +131,7 @@ autoplay = true
 bus = &"music"
 
 [node name="gun" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 position = Vector2(171, 256)
 stream = ExtResource("13_fjwwq")
 volume_db = -17.45
