@@ -1,18 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cosyd6yfx0ua"]
+[gd_scene load_steps=4 format=3 uid="uid://bh6i43rgh7q51"]
 
-[ext_resource type="Script" path="res://Scenes/ingredient_generator.gd" id="1_1epi0"]
-[ext_resource type="PackedScene" uid="uid://bhi3xm8xontk5" path="res://Scenes/ingredient_scene.tscn" id="2_4vmkf"]
+[ext_resource type="Script" path="res://Scenes/dish_generator.gd" id="1_1epi0"]
 [ext_resource type="Script" path="res://Scenes/Actionable.gd" id="3_0ds2d"]
-[ext_resource type="Resource" uid="uid://cxvua4t6sku05" path="res://Resources/Ingredients/amino.tres" id="3_wa8cx"]
-[ext_resource type="Resource" uid="uid://b0l7yps1u48b" path="res://Resources/Ingredients/fats.tres" id="4_jhhwc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qm7t1"]
 radius = 25.0
 
-[node name="IngredientGenerator" type="StaticBody2D"]
+[node name="DishGenerator" type="StaticBody2D"]
 script = ExtResource("1_1epi0")
-ingredient_scene = ExtResource("2_4vmkf")
-ingredients = Array[Resource("res://Resources/ingredient_item.gd")]([ExtResource("3_wa8cx"), ExtResource("4_jhhwc")])
 
 [node name="Actionable" type="Area2D" parent="."]
 collision_layer = 4
@@ -29,7 +24,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
 
-[node name="IngredientSpawnLocation" type="Marker2D" parent="."]
+[node name="DishSpawnLocation" type="Marker2D" parent="."]
 unique_name_in_owner = true
 
 [connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]

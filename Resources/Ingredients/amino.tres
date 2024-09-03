@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=2 format=3 uid="uid://cxvua4t6sku05"]
+
+[ext_resource type="Script" path="res://Resources/ingredient_item.gd" id="1_bbbpn"]
+
+[resource]
+script = ExtResource("1_bbbpn")
+name = "amino"
+cook_time = 0.0

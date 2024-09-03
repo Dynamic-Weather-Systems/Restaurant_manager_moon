@@ -8,7 +8,6 @@ var customer_count = 0
 var following_customer: Node = null
 var dish_queue = []
 
-
 func _ready():
 	for seat in %Seats.get_children():
 		seat.seat_interacted.connect(_on_seat_seat_interacted)
@@ -56,21 +55,27 @@ func _on_customer_following(node: Node):
 
 func _on_order_placed(customer: Node, order: DishItem):
 	dish_queue.append([customer, order])
-	print(dish_queue)
 
 
 func _on_customer_ate(customer: Node, dish: DishItem):
-	print(dish_queue.bsearch([customer,dish],true))
+	var index = dish_queue.find([customer,dish])
+	
+	if not index == -1: dish_queue.remove_at(index)
+	for seat in %Seats.get_children():
+		if seat.customer == customer:
+			seat.available = true
+			seat.customer = null
 
 
 
-func _on_seat_seat_interacted(node: Node, available):
+func _on_seat_seat_interacted(seat: Node, available):
 	if following_customer == null:
 		return
 	if not available:
 		return
 		
-	following_customer.follow_node = node
-	node.available = false
+	following_customer.follow_node = seat
+	seat.available = false
 	following_customer.state = following_customer.SEATING
+	seat.customer = following_customer
 	following_customer = null
