@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk8kk0l37wwyh"]
+
+[ext_resource type="Script" path="res://UI/options_settings.gd" id="1_jbyfm"]
+
+[node name="options_settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jbyfm")
+
+[node name="master_volume" type="HScrollBar" parent="."]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 81.0
+offset_right = 449.0
+offset_bottom = 89.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="value_text" type="Label" parent="master_volume"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 20.0
+offset_right = 182.0
+offset_bottom = 43.0
+text = "100"
+
+[node name="name_text" type="Label" parent="master_volume"]
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 126.0
+offset_bottom = 42.0
+text = "Master Volume:"
+
+[node name="sound_effects" type="HScrollBar" parent="."]
+offset_left = 209.0
+offset_top = 235.0
+offset_right = 452.0
+offset_bottom = 243.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="value_text" type="Label" parent="sound_effects"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 19.0
+offset_right = 171.0
+offset_bottom = 42.0
+text = "100"
+
+[node name="name_text" type="Label" parent="sound_effects"]
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 126.0
+offset_bottom = 42.0
+text = "Sound Effects:"
+
+[node name="background_music" type="HScrollBar" parent="."]
+offset_left = 209.0
+offset_top = 156.0
+offset_right = 452.0
+offset_bottom = 164.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="value_text" type="Label" parent="background_music"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 20.0
+offset_right = 113.0
+offset_bottom = 43.0
+text = "100"
+
+[node name="name_text" type="Label" parent="background_music"]
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 126.0
+offset_bottom = 42.0
+text = "Music: "
+
+[connection signal="value_changed" from="master_volume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="sound_effects" to="." method="_on_sound_effects_value_changed"]
+[connection signal="value_changed" from="background_music" to="." method="_on_background_music_value_changed"]

@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Restaurant_manager_moon"
-run/main_scene="res://test_level/layout_3.tscn"
+
+run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MusicSettings="*res://autoloads/music_settings.gd"
 
 [display]
 
