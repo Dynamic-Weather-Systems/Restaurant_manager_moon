@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="IngredientItem" load_steps=2 format=3 uid="uid://cxvua4t6sku05"]
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=3 format=3 uid="uid://cxvua4t6sku05"]
 
 [ext_resource type="Script" path="res://Resources/ingredient_item.gd" id="1_bbbpn"]
+[ext_resource type="Texture2D" uid="uid://ct8g3vj64x0s3" path="res://Assets/genericItem_color_107.png" id="2_soomf"]
 
 [resource]
 script = ExtResource("1_bbbpn")
 name = "amino"
 cook_time = 0.0
+world_icon = ExtResource("2_soomf")

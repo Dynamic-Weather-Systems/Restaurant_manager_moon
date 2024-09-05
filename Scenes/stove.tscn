@@ -1,11 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnrn58c2uwi7h"]
+[gd_scene load_steps=15 format=3 uid="uid://dnrn58c2uwi7h"]
 
 [ext_resource type="Script" path="res://Scenes/Actionable.gd" id="1_5xbxp"]
 [ext_resource type="Script" path="res://Scenes/stove.gd" id="1_hau46"]
 [ext_resource type="PackedScene" uid="uid://c2lrqfonfhvw1" path="res://Scenes/dish_scene.tscn" id="2_nf6oy"]
+[ext_resource type="Texture2D" uid="uid://blrdhtbl03aur" path="res://Assets/Simple explosion/simpleExplosion00.png" id="4_jhaje"]
+[ext_resource type="Texture2D" uid="uid://1kvdcpck0y3i" path="res://Assets/Simple explosion/simpleExplosion01.png" id="5_6qs32"]
+[ext_resource type="Texture2D" uid="uid://bnia1kx2w08va" path="res://Assets/Simple explosion/simpleExplosion02.png" id="6_2jfhn"]
+[ext_resource type="Texture2D" uid="uid://dyoa74wvmc7wx" path="res://Assets/Simple explosion/simpleExplosion03.png" id="7_axd4b"]
+[ext_resource type="Texture2D" uid="uid://gkoyev6yq0k1" path="res://Assets/Simple explosion/simpleExplosion04.png" id="8_lmyl5"]
+[ext_resource type="Texture2D" uid="uid://t3ry1vuryml8" path="res://Assets/Simple explosion/simpleExplosion05.png" id="9_ikqc4"]
+[ext_resource type="Texture2D" uid="uid://c4g2hsar8qn8q" path="res://Assets/Simple explosion/simpleExplosion06.png" id="10_j5jdc"]
+[ext_resource type="Texture2D" uid="uid://qjsc0dqdd7f5" path="res://Assets/Simple explosion/simpleExplosion07.png" id="11_4t2db"]
+[ext_resource type="Texture2D" uid="uid://dk32m847ckf40" path="res://Assets/Simple explosion/simpleExplosion08.png" id="12_kskdh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjdr1"]
 size = Vector2(68, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yv0lu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jhaje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6qs32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2jfhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_axd4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lmyl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ikqc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j5jdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4t2db")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kskdh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
 
 [node name="Stove" type="StaticBody2D"]
 collision_mask = 0
@@ -24,11 +68,18 @@ shape = SubResource("RectangleShape2D_xjdr1")
 unique_name_in_owner = true
 wait_time = 2.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="DishSprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 
 [node name="DishSpawnLocation" type="Marker2D" parent="."]
 unique_name_in_owner = true
+
+[node name="CookingAnimation" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_yv0lu")
+frame_progress = 0.12136
 
 [connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]
 [connection signal="timeout" from="CookTimer" to="." method="_on_cook_timer_timeout"]

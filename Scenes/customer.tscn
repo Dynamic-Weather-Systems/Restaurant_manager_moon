@@ -1,14 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://f06nms5yog23"]
+[gd_scene load_steps=14 format=3 uid="uid://f06nms5yog23"]
 
 [ext_resource type="Script" path="res://Scenes/Customer.gd" id="1_qj4ga"]
 [ext_resource type="PackedScene" uid="uid://dduoickuchbsn" path="res://Scenes/actionable.tscn" id="2_lodks"]
 [ext_resource type="Resource" uid="uid://bk7nsadcwvu08" path="res://Resources/Dishes/test_dish.tres" id="2_oye8u"]
+[ext_resource type="Texture2D" uid="uid://c3sgypd1oei8a" path="res://Assets/tilesheet_transparent.png" id="4_or862"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dcm8"]
 radius = 53.0094
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jq7wt"]
-radius = 17.2627
+radius = 11.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2td6"]
+atlas = ExtResource("4_or862")
+region = Rect2(476, 85, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipuhf"]
+atlas = ExtResource("4_or862")
+region = Rect2(493, 85, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y47o1"]
+atlas = ExtResource("4_or862")
+region = Rect2(510, 85, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxtu7"]
+atlas = ExtResource("4_or862")
+region = Rect2(527, 85, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ecwf"]
+atlas = ExtResource("4_or862")
+region = Rect2(544, 85, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lb7t"]
+atlas = ExtResource("4_or862")
+region = Rect2(561, 85, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hwet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2td6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipuhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y47o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxtu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ecwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lb7t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Customer" type="CharacterBody2D"]
 collision_layer = 8
@@ -22,11 +73,20 @@ preferred_dish = ExtResource("2_oye8u")
 collision_layer = 12
 
 [node name="CollisionShape2D" parent="Actionable" index="0"]
+position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_7dcm8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_jq7wt")
+
+[node name="SpriteRotation" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteRotation"]
+position = Vector2(4.00001, 4.76837e-07)
+scale = Vector2(4.625, 4.625)
+sprite_frames = SubResource("SpriteFrames_7hwet")
 
 [connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]
 

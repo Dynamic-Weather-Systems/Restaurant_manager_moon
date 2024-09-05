@@ -28,4 +28,8 @@ script = ExtResource("1_mngqx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
 shape = SubResource("CircleShape2D_l4kg1")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+
 [connection signal="actioned" from="Actionable" to="." method="_on_actionable_actioned"]

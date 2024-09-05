@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var vel_lerp_weight: float = 0.2
 @export var sitting_speed: float = 400
 
+@onready var spriteRotation = %SpriteRotation
+
 
 enum {
 	RECEPTION,
@@ -34,10 +36,11 @@ func _physics_process(delta):
 			velocity = Vector2.ZERO
 			pass
 		WALKING:
+			direction = Vector2.RIGHT.rotated(get_angle_to(follow_node.global_position))
+			spriteRotation.rotation = atan2(direction.y, direction.x)
 			if global_position.distance_to(follow_node.global_position) <= 150:
 				velocity = velocity.lerp(Vector2.ZERO, vel_lerp_weight)
 			else:
-				direction = Vector2.RIGHT.rotated(get_angle_to(follow_node.global_position))
 				velocity = velocity.lerp(direction * SPEED, vel_lerp_weight)
 				
 		SEATING:
