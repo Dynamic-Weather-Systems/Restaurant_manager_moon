@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="IngredientItem" load_steps=2 format=3 uid="uid://b0l7yps1u48b"]
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=3 format=3 uid="uid://b0l7yps1u48b"]
 
 [ext_resource type="Script" path="res://Resources/ingredient_item.gd" id="1_4rumr"]
+[ext_resource type="Texture2D" uid="uid://dehegobl3ejbm" path="res://Assets/genericItem_color_108.png" id="2_05ybn"]
 
 [resource]
 script = ExtResource("1_4rumr")
 name = "fats"
 cook_time = 0.0
+world_icon = ExtResource("2_05ybn")

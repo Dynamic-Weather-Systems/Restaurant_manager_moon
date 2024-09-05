@@ -4,6 +4,11 @@ extends PickupItem
 @onready var actionable = %Actionable
 
 
+func _ready():
+	var sprite = %Sprite2D
+	sprite.texture = ingredient.world_icon
+
+
 func _on_actionable_actioned(node):
 	pickup(node)
 

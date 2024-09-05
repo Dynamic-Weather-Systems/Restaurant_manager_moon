@@ -4,8 +4,10 @@ extends StaticBody2D
 @export var cook_amount: float = 1
 @export  var dish_scene: PackedScene
 
-@onready var dishSprite = %Sprite2D
+@onready var dishSprite = %DishSprite2D
 @onready var cookTimer = %CookTimer
+@onready var cookAnimation = %CookingAnimation
+
 
 var active: bool = false
 
@@ -16,19 +18,14 @@ var dish: DishItem = null:
 			active = false
 			dishSprite.texture = null
 			cookTimer.stop()
+			cookAnimation.stop()
+			cookAnimation.hide()
 		else:
 			active = true
 			dishSprite.texture = dish.world_icon
 			cookTimer.start(2)
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	print(dish)
+			cookAnimation.play("default")
+			cookAnimation.show()
 
 
 func _on_actionable_actioned(node):
