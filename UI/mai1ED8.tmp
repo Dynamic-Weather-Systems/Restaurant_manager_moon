@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1l0vnurtbxbo"]
+
+[ext_resource type="Script" path="res://UI/main_menu2.gd" id="1_awkc5"]
+[ext_resource type="Texture2D" uid="uid://7yt73paoccmw" path="res://Assets/NASA-Apollo8-Dec24-Earthrise.jpg" id="2_lwbqb"]
+[ext_resource type="Texture2D" uid="uid://c6ek6cu4jo6bf" path="res://Assets/NASA-Apollo8-Dec24-Earthrise.png" id="3_passd"]
+[ext_resource type="Texture2D" uid="uid://84lmmb0avteg" path="res://Assets/new_game_hover.png" id="6_kfmp8"]
+[ext_resource type="Texture2D" uid="uid://djwtwm6c1xcl7" path="res://Assets/new_game.png" id="6_wpryh"]
+[ext_resource type="Texture2D" uid="uid://b5ks31rfmbwt7" path="res://Assets/new_game_pressed.png" id="7_cuk7t"]
+[ext_resource type="Texture2D" uid="uid://iww3tdrso2ek" path="res://Assets/options.png" id="8_r0pvm"]
+[ext_resource type="Texture2D" uid="uid://b1dheg3djg7km" path="res://Assets/options_pressed.png" id="9_4eve0"]
+[ext_resource type="Texture2D" uid="uid://50l8wy6e4d63" path="res://Assets/options_hover.png" id="9_83gg2"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_awkc5")
+metadata/_edit_lock_ = true
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(576, 337.5)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("2_lwbqb")
+metadata/_edit_lock_ = true
+
+[node name="title" type="Sprite2D" parent="."]
+position = Vector2(708, 162)
+texture = ExtResource("3_passd")
+metadata/_edit_lock_ = true
+
+[node name="new_game" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 76.0
+offset_right = 286.0
+offset_bottom = 120.0
+texture_normal = ExtResource("6_wpryh")
+texture_pressed = ExtResource("7_cuk7t")
+texture_hover = ExtResource("6_kfmp8")
+
+[node name="options" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("8_r0pvm")
+texture_pressed = ExtResource("9_4eve0")
+texture_hover = ExtResource("9_83gg2")
