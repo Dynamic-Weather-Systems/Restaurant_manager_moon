@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk8kk0l37wwyh"]
+[gd_scene load_steps=7 format=3 uid="uid://bk8kk0l37wwyh"]
 
 [ext_resource type="Script" path="res://UI/options_settings.gd" id="1_jbyfm"]
 [ext_resource type="Texture2D" uid="uid://7yt73paoccmw" path="res://Assets/NASA-Apollo8-Dec24-Earthrise.jpg" id="2_v2una"]
 [ext_resource type="Texture2D" uid="uid://c6ek6cu4jo6bf" path="res://Assets/NASA-Apollo8-Dec24-Earthrise.png" id="3_vc6h4"]
+[ext_resource type="Texture2D" uid="uid://orvj8lpscl4" path="res://Assets/barHorizontal_red_mid.png" id="4_ljtg8"]
+[ext_resource type="FontFile" uid="uid://bi2qpu0vktycr" path="res://Assets/Kenney Future.ttf" id="5_bnj5i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_onyng"]
+texture = ExtResource("4_ljtg8")
 
 [node name="options_settings" type="Control"]
 layout_mode = 3
@@ -22,28 +27,34 @@ metadata/_edit_lock_ = true
 
 [node name="master_volume" type="HScrollBar" parent="."]
 layout_mode = 0
-offset_left = 113.0
-offset_top = 60.0
-offset_right = 356.0
-offset_bottom = 68.0
+offset_left = 73.0
+offset_top = 55.0
+offset_right = 380.0
+offset_bottom = 65.0
+theme_override_styles/scroll = SubResource("StyleBoxTexture_onyng")
 max_value = 1.0
-step = 0.01
+step = 0.1
 value = 1.0
+custom_step = 0.1
 
-[node name="value_text" type="Label" parent="master_volume"]
+[node name="value_text" type="RichTextLabel" parent="master_volume"]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 20.0
-offset_right = 182.0
-offset_bottom = 43.0
+offset_left = 256.0
+offset_top = 23.0
+offset_right = 314.0
+offset_bottom = 51.0
+theme_override_fonts/normal_font = ExtResource("5_bnj5i")
+theme_override_font_sizes/normal_font_size = 22
 text = "100"
 
-[node name="name_text" type="Label" parent="master_volume"]
+[node name="name_text" type="RichTextLabel" parent="master_volume"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 19.0
-offset_right = 126.0
-offset_bottom = 42.0
+offset_left = 13.0
+offset_top = 21.0
+offset_right = 258.0
+offset_bottom = 53.0
+theme_override_fonts/normal_font = ExtResource("5_bnj5i")
+theme_override_font_sizes/normal_font_size = 22
 text = "Master Volume:"
 
 [node name="sound_effects" type="HScrollBar" parent="."]
@@ -56,20 +67,24 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="value_text" type="Label" parent="sound_effects"]
+[node name="value_text" type="RichTextLabel" parent="sound_effects"]
 layout_mode = 0
-offset_left = 131.0
-offset_top = 19.0
-offset_right = 171.0
-offset_bottom = 42.0
+offset_left = 206.0
+offset_top = 23.0
+offset_right = 283.0
+offset_bottom = 54.0
+theme_override_fonts/normal_font = ExtResource("5_bnj5i")
+theme_override_font_sizes/normal_font_size = 22
 text = "100"
 
-[node name="name_text" type="Label" parent="sound_effects"]
+[node name="name_text" type="RichTextLabel" parent="sound_effects"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 19.0
-offset_right = 126.0
-offset_bottom = 42.0
+offset_left = -36.0
+offset_top = 24.0
+offset_right = 214.0
+offset_bottom = 56.0
+theme_override_fonts/normal_font = ExtResource("5_bnj5i")
+theme_override_font_sizes/normal_font_size = 22
 text = "Sound Effects:"
 
 [node name="background_music" type="HScrollBar" parent="."]
@@ -82,20 +97,24 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="value_text" type="Label" parent="background_music"]
+[node name="value_text" type="RichTextLabel" parent="background_music"]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 20.0
-offset_right = 113.0
-offset_bottom = 43.0
+offset_left = 199.0
+offset_top = 15.0
+offset_right = 262.0
+offset_bottom = 38.0
+theme_override_fonts/normal_font = ExtResource("5_bnj5i")
+theme_override_font_sizes/normal_font_size = 22
 text = "100"
 
-[node name="name_text" type="Label" parent="background_music"]
+[node name="name_text" type="RichTextLabel" parent="background_music"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 19.0
-offset_right = 126.0
-offset_bottom = 42.0
+offset_left = -55.0
+offset_top = 20.0
+offset_right = 51.0
+offset_bottom = 43.0
+theme_override_fonts/normal_font = ExtResource("5_bnj5i")
+theme_override_font_sizes/normal_font_size = 22
 text = "Music: "
 
 [node name="Button" type="Button" parent="."]

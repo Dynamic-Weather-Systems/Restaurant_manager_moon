@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cny1tcibjumfs"
-path="res://.godot/imported/slab_button.png-3a61e3b25104904e8f17d89b9a1fe739.ctex"
+uid="uid://do6kq0unwv67e"
+path="res://.godot/imported/squareYellow.png-6512ab460bdb1b29dc37da08d611b5b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/slab_button.png"
-dest_files=["res://.godot/imported/slab_button.png-3a61e3b25104904e8f17d89b9a1fe739.ctex"]
+source_file="res://Assets/squareYellow.png"
+dest_files=["res://.godot/imported/squareYellow.png-6512ab460bdb1b29dc37da08d611b5b9.ctex"]
 
 [params]
 

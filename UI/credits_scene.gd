@@ -15,6 +15,5 @@ var main_scene = load('res://UI/main_menu.tscn')
 
 
 func _on_button_pressed():
-	main_scene = main_scene.instantiate()
-	get_tree().root.add_child(main_scene)
+	get_node("/root/main_menu").set_process_mode(0)
 	self.queue_free()

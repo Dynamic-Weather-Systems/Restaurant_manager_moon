@@ -53,7 +53,7 @@ func _on_options_pressed():
 
 func _on_credits_pressed():
 	get_tree().root.add_child(credit_scene.instantiate())
-	self.queue_free()
+	self.set_process_mode(4)
 
 
 func _on_guitar_finished():
