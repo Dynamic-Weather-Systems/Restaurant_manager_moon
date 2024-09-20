@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8ckquk17h62d"]
+[gd_scene load_steps=7 format=3 uid="uid://c8ckquk17h62d"]
 
 [ext_resource type="Script" path="res://UI/credits_scene.gd" id="1_5v15x"]
 [ext_resource type="Texture2D" uid="uid://7yt73paoccmw" path="res://Assets/NASA-Apollo8-Dec24-Earthrise.jpg" id="1_nlxwv"]
+[ext_resource type="FontFile" uid="uid://bi2qpu0vktycr" path="res://Assets/Kenney Future.ttf" id="3_pg3iv"]
+[ext_resource type="Texture2D" uid="uid://cctjg8w0cuau4" path="res://Assets/back.png" id="3_s6akn"]
+[ext_resource type="Texture2D" uid="uid://ddol8hwluci7e" path="res://Assets/back_pressed.png" id="4_ia1u1"]
+[ext_resource type="Texture2D" uid="uid://dwi8hxl3bvdrq" path="res://Assets/back_hover.png" id="5_vvln2"]
 
 [node name="credits_scene" type="Node2D"]
 script = ExtResource("1_5v15x")
@@ -11,18 +15,22 @@ scale = Vector2(1.125, 1.125)
 texture = ExtResource("1_nlxwv")
 centered = false
 
-[node name="Label" type="Label" parent="."]
-offset_right = 772.0
-offset_bottom = 226.0
-theme_override_font_sizes/font_size = 55
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 102.0
+offset_top = 80.0
+offset_right = 1098.0
+offset_bottom = 148.0
+theme_override_fonts/normal_font = ExtResource("3_pg3iv")
+theme_override_font_sizes/normal_font_size = 55
 text = "DYNAMIC WEATHER STUDIOS"
 
-[node name="Button" type="Button" parent="."]
-offset_left = 355.0
-offset_top = 116.0
-offset_right = 403.0
-offset_bottom = 147.0
-scale = Vector2(2, 2)
-text = "close"
+[node name="Button" type="TextureButton" parent="."]
+offset_left = 502.0
+offset_top = 203.0
+offset_right = 691.0
+offset_bottom = 249.0
+texture_normal = ExtResource("3_s6akn")
+texture_pressed = ExtResource("4_ia1u1")
+texture_hover = ExtResource("5_vvln2")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

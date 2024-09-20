@@ -1,6 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7gs7a63nsp0o"]
+[gd_scene load_steps=15 format=3 uid="uid://b7gs7a63nsp0o"]
 
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="1_uop24"]
+[ext_resource type="Texture2D" uid="uid://bh5e7a1ofbues" path="res://Assets/resume.png" id="2_e54v0"]
+[ext_resource type="Texture2D" uid="uid://d2l8sqi0opu38" path="res://Assets/resume_pressed.png" id="3_sfiml"]
+[ext_resource type="Texture2D" uid="uid://dm31gcqvxerfv" path="res://Assets/resume_hover.png" id="4_502nb"]
+[ext_resource type="Texture2D" uid="uid://djv11qffvmylf" path="res://Assets/pause.png" id="5_kqdnn"]
+[ext_resource type="Texture2D" uid="uid://b0omahpeu3y0l" path="res://Assets/pause_pressed.png" id="6_udqfb"]
+[ext_resource type="Texture2D" uid="uid://d3gmhfps3hup5" path="res://Assets/pause_hover.png" id="7_q3i3d"]
+[ext_resource type="Texture2D" uid="uid://b0e0caadb7de1" path="res://Assets/main_menu.png" id="8_jcdk0"]
+[ext_resource type="Texture2D" uid="uid://c63s6o8v87byd" path="res://Assets/main_menu_pressed.png" id="9_ff4hv"]
+[ext_resource type="Texture2D" uid="uid://c642if3wlfvkc" path="res://Assets/main_menu_hover.png" id="10_hr7i3"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_p4fxl"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_walng"]
+events = [SubResource("InputEventAction_p4fxl")]
 
 [sub_resource type="InputEventAction" id="InputEventAction_waggq"]
 action = &"ui_cancel"
@@ -14,18 +29,40 @@ scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_uop24")
 
-[node name="resume" type="Button" parent="."]
-offset_left = 257.5
-offset_top = 137.0
-offset_right = 324.5
-offset_bottom = 168.0
-text = "resume"
+[node name="resume" type="TextureButton" parent="."]
+offset_right = 47.0
+offset_bottom = 49.0
+focus_neighbor_top = NodePath("../main_menu_button")
+focus_neighbor_bottom = NodePath("../main_menu_button")
+focus_next = NodePath("../main_menu_button")
+focus_previous = NodePath("../main_menu_button")
+shortcut = SubResource("Shortcut_walng")
+texture_normal = ExtResource("2_e54v0")
+texture_pressed = ExtResource("3_sfiml")
+texture_hover = ExtResource("4_502nb")
 
-[node name="pause" type="Button" parent="."]
+[node name="pause" type="TextureButton" parent="."]
 process_mode = 1
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 47.0
+offset_bottom = 49.0
 shortcut = SubResource("Shortcut_14t4s")
+texture_normal = ExtResource("5_kqdnn")
+texture_pressed = ExtResource("6_udqfb")
+texture_hover = ExtResource("7_q3i3d")
+
+[node name="main_menu_button" type="TextureButton" parent="."]
+offset_left = 180.5
+offset_top = 139.5
+offset_right = 369.5
+offset_bottom = 185.5
+focus_neighbor_top = NodePath("../resume")
+focus_neighbor_bottom = NodePath("../resume")
+focus_next = NodePath("../resume")
+focus_previous = NodePath("../resume")
+texture_normal = ExtResource("8_jcdk0")
+texture_pressed = ExtResource("9_ff4hv")
+texture_hover = ExtResource("10_hr7i3")
 
 [connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="main_menu_button" to="." method="_on_main_menu_button_pressed"]

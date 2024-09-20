@@ -9,9 +9,10 @@ var new_game_tex_hov = load("res://Assets/new_game_hover.png")
 var options_tex_hov = load("res://Assets/options_hover.png")
 var credits_tex_hov = load("res://Assets/credits_hover.png")
 
-var level_scene = load('res://test_level/layout_3.tscn')
+var level_scene = load('res://test_level/layout_1.tscn')
 var credit_scene = load('res://UI/credits_scene.tscn')
 var options_scene = load('res://UI/options_settings.tscn')
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,13 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk8kk0l37wwyh"]
+[gd_scene load_steps=11 format=3 uid="uid://bk8kk0l37wwyh"]
 
 [ext_resource type="Script" path="res://UI/options_settings.gd" id="1_jbyfm"]
 [ext_resource type="Texture2D" uid="uid://7yt73paoccmw" path="res://Assets/NASA-Apollo8-Dec24-Earthrise.jpg" id="2_v2una"]
-[ext_resource type="Texture2D" uid="uid://c6ek6cu4jo6bf" path="res://Assets/NASA-Apollo8-Dec24-Earthrise.png" id="3_vc6h4"]
-[ext_resource type="Texture2D" uid="uid://orvj8lpscl4" path="res://Assets/barHorizontal_red_mid.png" id="4_ljtg8"]
+[ext_resource type="Texture2D" uid="uid://cd6bl47w1naoh" path="res://Assets/crossair_whiteOutline.png" id="4_e4mw8"]
+[ext_resource type="Texture2D" uid="uid://orvj8lpscl4" path="res://Assets/barHorizontal_red_mid.png" id="5_7llbk"]
 [ext_resource type="FontFile" uid="uid://bi2qpu0vktycr" path="res://Assets/Kenney Future.ttf" id="5_bnj5i"]
+[ext_resource type="Texture2D" uid="uid://cou33ph3hsqp1" path="res://Assets/save.png" id="7_cwmjv"]
+[ext_resource type="Texture2D" uid="uid://ca5fylbof0xmt" path="res://Assets/save_pressed.png" id="8_aqrsm"]
+[ext_resource type="Texture2D" uid="uid://dot8ipi667vj" path="res://Assets/save_hover.png" id="9_mseh0"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_onyng"]
-texture = ExtResource("4_ljtg8")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7mii2"]
+texture = ExtResource("5_7llbk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4c8hm"]
+texture = ExtResource("5_7llbk")
 
 [node name="options_settings" type="Control"]
 layout_mode = 3
@@ -20,112 +26,107 @@ scale = Vector2(1.125, 1.125)
 texture = ExtResource("2_v2una")
 metadata/_edit_lock_ = true
 
-[node name="title" type="Sprite2D" parent="."]
-position = Vector2(708, 162)
-texture = ExtResource("3_vc6h4")
-metadata/_edit_lock_ = true
-
-[node name="master_volume" type="HScrollBar" parent="."]
+[node name="sound_effects" type="HSlider" parent="."]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 55.0
-offset_right = 380.0
-offset_bottom = 65.0
-theme_override_styles/scroll = SubResource("StyleBoxTexture_onyng")
+offset_left = 662.0
+offset_top = 274.0
+offset_right = 962.0
+offset_bottom = 310.0
+focus_neighbor_left = NodePath("../Button")
+focus_neighbor_top = NodePath("../background_music")
+focus_neighbor_right = NodePath("../Button")
+focus_neighbor_bottom = NodePath("../master_volume")
+focus_next = NodePath("../Button")
+focus_previous = NodePath("../background_music")
+theme_override_icons/grabber = ExtResource("4_e4mw8")
+theme_override_icons/grabber_highlight = ExtResource("4_e4mw8")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_7mii2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_4c8hm")
 max_value = 1.0
 step = 0.1
 value = 1.0
-custom_step = 0.1
-
-[node name="value_text" type="RichTextLabel" parent="master_volume"]
-layout_mode = 0
-offset_left = 256.0
-offset_top = 23.0
-offset_right = 314.0
-offset_bottom = 51.0
-theme_override_fonts/normal_font = ExtResource("5_bnj5i")
-theme_override_font_sizes/normal_font_size = 22
-text = "100"
-
-[node name="name_text" type="RichTextLabel" parent="master_volume"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 21.0
-offset_right = 258.0
-offset_bottom = 53.0
-theme_override_fonts/normal_font = ExtResource("5_bnj5i")
-theme_override_font_sizes/normal_font_size = 22
-text = "Master Volume:"
-
-[node name="sound_effects" type="HScrollBar" parent="."]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 214.0
-offset_right = 359.0
-offset_bottom = 222.0
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="value_text" type="RichTextLabel" parent="sound_effects"]
-layout_mode = 0
-offset_left = 206.0
-offset_top = 23.0
-offset_right = 283.0
-offset_bottom = 54.0
-theme_override_fonts/normal_font = ExtResource("5_bnj5i")
-theme_override_font_sizes/normal_font_size = 22
-text = "100"
 
 [node name="name_text" type="RichTextLabel" parent="sound_effects"]
 layout_mode = 0
-offset_left = -36.0
-offset_top = 24.0
-offset_right = 214.0
-offset_bottom = 56.0
+offset_left = 1.0
+offset_top = 39.0
+offset_right = 251.0
+offset_bottom = 71.0
 theme_override_fonts/normal_font = ExtResource("5_bnj5i")
 theme_override_font_sizes/normal_font_size = 22
-text = "Sound Effects:"
+text = "Sound Effects"
 
-[node name="background_music" type="HScrollBar" parent="."]
+[node name="master_volume" type="HSlider" parent="."]
 layout_mode = 0
-offset_left = 116.0
-offset_top = 135.0
-offset_right = 359.0
-offset_bottom = 143.0
+offset_left = 660.0
+offset_top = 69.0
+offset_right = 960.0
+offset_bottom = 105.0
+focus_neighbor_left = NodePath("../Button")
+focus_neighbor_top = NodePath("../sound_effects")
+focus_neighbor_right = NodePath("../Button")
+focus_neighbor_bottom = NodePath("../background_music")
+focus_next = NodePath("../background_music")
+focus_previous = NodePath("../Button")
+theme_override_icons/grabber = ExtResource("4_e4mw8")
+theme_override_icons/grabber_highlight = ExtResource("4_e4mw8")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_7mii2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_4c8hm")
 max_value = 1.0
-step = 0.01
+step = 0.1
 value = 1.0
 
-[node name="value_text" type="RichTextLabel" parent="background_music"]
+[node name="name_text" type="RichTextLabel" parent="master_volume"]
 layout_mode = 0
-offset_left = 199.0
-offset_top = 15.0
-offset_right = 262.0
-offset_bottom = 38.0
+offset_left = 2.0
+offset_top = 36.0
+offset_right = 253.0
+offset_bottom = 67.0
 theme_override_fonts/normal_font = ExtResource("5_bnj5i")
 theme_override_font_sizes/normal_font_size = 22
-text = "100"
+text = "Master Volume"
+
+[node name="background_music" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 171.0
+offset_right = 960.0
+offset_bottom = 207.0
+focus_neighbor_left = NodePath("../Button")
+focus_neighbor_top = NodePath("../master_volume")
+focus_neighbor_right = NodePath("../Button")
+focus_neighbor_bottom = NodePath("../sound_effects")
+focus_next = NodePath("../sound_effects")
+focus_previous = NodePath("../master_volume")
+theme_override_icons/grabber = ExtResource("4_e4mw8")
+theme_override_icons/grabber_highlight = ExtResource("4_e4mw8")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_7mii2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_4c8hm")
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [node name="name_text" type="RichTextLabel" parent="background_music"]
 layout_mode = 0
-offset_left = -55.0
-offset_top = 20.0
-offset_right = 51.0
-offset_bottom = 43.0
+offset_left = 4.0
+offset_top = 39.0
+offset_right = 106.0
+offset_bottom = 67.0
 theme_override_fonts/normal_font = ExtResource("5_bnj5i")
 theme_override_font_sizes/normal_font_size = 22
-text = "Music: "
+text = "Music"
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 274.0
-offset_right = 187.0
-offset_bottom = 305.0
-text = "Back"
+offset_left = 223.0
+offset_top = 158.0
+offset_right = 412.0
+offset_bottom = 204.0
+texture_normal = ExtResource("7_cwmjv")
+texture_pressed = ExtResource("8_aqrsm")
+texture_hover = ExtResource("9_mseh0")
 
-[connection signal="value_changed" from="master_volume" to="." method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="sound_effects" to="." method="_on_sound_effects_value_changed"]
+[connection signal="value_changed" from="master_volume" to="." method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="background_music" to="." method="_on_background_music_value_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
